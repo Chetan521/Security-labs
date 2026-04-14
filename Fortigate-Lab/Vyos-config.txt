@@ -1,0 +1,125 @@
+vyos@vyos:~$ show configuration 
+interfaces {
+    ethernet eth0 {
+        address 23.1.2.1/24
+        hw-id 50:00:00:08:00:00
+        offload {
+            gro
+            gso
+            sg
+            tso
+        }
+    }
+    ethernet eth1 {
+        hw-id 50:00:00:08:00:01
+        offload {
+            gro
+            gso
+            sg
+            tso
+        }
+    }
+    ethernet eth2 {
+        address dhcp
+        hw-id 50:00:00:08:00:02
+        offload {
+            gro
+            gso
+            sg
+            tso
+        }
+}
+    ethernet eth3 {
+        hw-id 50:00:00:08:00:03
+        offload {
+            gro
+            gso
+            sg
+            tso
+        }
+    }
+    loopback lo {
+    }
+}
+nat {
+    source {
+        rule 10 {
+            outbound-interface {
+                name eth2
+            }
+            source {
+                address 23.1.2.0/24
+            }
+            translation {
+                address masquerade
+            }
+        }
+    }
+}
+protocols {
+    static {
+ route 0.0.0.0/0 {
+            next-hop 192.168.1.1 {
+            }
+            next-hop 192.168.48.2 {
+            }
+        }
+    }
+}
+service {
+    ntp {
+        allow-client {
+            address 127.0.0.0/8
+            address 169.254.0.0/16
+            address 10.0.0.0/8
+            address 172.16.0.0/12
+            address 192.168.0.0/16
+            address ::1/128
+            address fe80::/10
+            address fc00::/7
+        }
+        server time1.vyos.net {
+        }
+        server time2.vyos.net {
+        }
+        server time3.vyos.net {
+        }
+    }
+}
+system {
+    config-management {
+        commit-revisions 100
+    }
+    console {
+device ttyS0 {
+            speed 115200
+        }
+    }
+    host-name vyos
+    login {
+        operator-group default {
+            command-policy {
+                allow "*"
+            }
+        }
+        user vyos {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+    }
+    option {
+        reboot-on-upgrade-failure 5
+    }
+    syslog {
+        local {
+            facility all {
+                level info
+            }
+            facility local7 {
+                level debug
+            }
+        }
+    }
+}
