@@ -23,7 +23,7 @@ Network → Zones
 ### **Step 2 — Create Firewall Policy**
 Policy & Objects → Firewall Policy → Create New
 
-- **Name:** fw2pc to internet  
+- **Name:** IN-OUT 
 - **Incoming Interface:** INSIDE  
 - **Outgoing Interface:** OUTSIDE  
 - **Source:** Subnet_192.168  
@@ -43,7 +43,7 @@ Enable:
 ```
 config firewall policy
     edit 1
-        set name "fw2pc to internet"
+        set name "IN-OUT"
         set srcintf "INSIDE"
         set dstintf "OUTSIDE"
         set srcaddr "Subnet_192.168"
