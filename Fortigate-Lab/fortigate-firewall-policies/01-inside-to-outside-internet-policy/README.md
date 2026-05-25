@@ -26,7 +26,7 @@ Policy & Objects → Firewall Policy → Create New
 - **Name:** IN-OUT 
 - **Incoming Interface:** INSIDE  
 - **Outgoing Interface:** OUTSIDE  
-- **Source:** Subnet_192.168  
+- **Source:** fw3wan1(23.1.2.0)  
 - **Destination:** all  
 - **Service:** ALL  
 - **Action:** ACCEPT  
@@ -46,7 +46,7 @@ config firewall policy
         set name "IN-OUT"
         set srcintf "INSIDE"
         set dstintf "OUTSIDE"
-        set srcaddr "Subnet_192.168"
+        set srcaddr "fw3wan1(23.1.2.0)"
         set dstaddr "all"
         set action accept
         set schedule "always"
