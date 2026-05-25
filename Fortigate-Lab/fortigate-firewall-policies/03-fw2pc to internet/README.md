@@ -1,11 +1,10 @@
 
 
-# 01 — Inside → Outside Internet Policy (Zone‑Based)
+# 01 — Fw2pc →  Internet Policy (Zone‑Based)
 
 ## 🎯 Objective
 Allow LAN users (INSIDE zone) to access the internet through the OUTSIDE zone.
 
----
 
 ## 🗺️ Topology
 - INSIDE zone = port3  
