@@ -14,7 +14,7 @@ System → Feature Visibility → Central NAT → ON
 ### **Step 2 — Create SNAT Rule**
 Policy & Objects → Central SNAT → Create New
 
-- **Source:** Subnet_192.168  
+- **Source:**fw3wan1(23.1.2.0/24) 
 - **Destination:** all  
 - **Outgoing Interface:** OUTSIDE  
 - **Translated Address:** Use Outgoing Interface IP  
@@ -26,7 +26,7 @@ Policy & Objects → Central SNAT → Create New
 ```
 config firewall central-snat-map
     edit 1
-        set srcaddr "Subnet_192.168"
+        set srcaddr "fw3wan1"
         set dstaddr "all"
         set protocol 0
         set outbound-interface "OUTSIDE"
